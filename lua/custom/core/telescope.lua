@@ -25,12 +25,14 @@ return {
       {
         "<leader>sf",
         function()
-          vim.fn.system("git rev-parse --is-inside-work-tree")
-          if vim.v.shell_error == 0 then
-            picker.git_files()
-          else
+          local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
+          if git.code ~= 0 then
             picker.find_files()
+            return
           end
+          -- If CWD is somewhere inside a git repo, then it will use
+          -- the CWD instead of the git repo root dir.
+          picker.git_files({ use_git_root = false })
         end,
         desc = "CWD files (git/general)",
       },
