@@ -34,5 +34,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = require("custom.util").group,
   callback = function()
     vim.opt.formatoptions:remove("o")
+    vim.opt.formatoptions:append("r")
   end,
 })
