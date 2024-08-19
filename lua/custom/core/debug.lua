@@ -37,12 +37,13 @@ return {
       { "<leader>dl", dap.run_last, desc = "Debug run last" },
       { "<leader>dv", dapvirtual.toggle, desc = "Debug toggle virutal text" },
       { "<F3>", dap.continue, desc = "Debug start / continue" },
+      { "<F15>", dap.close, desc = "Debug stop (Shift+F3)" },
       { "<F4>", dap.run_to_cursor, desc = "Debug run to cursor" },
       { "<F5>", dap.restart, desc = "Debug restart" },
-      { "<F6>", dap.step_over, desc = "Debug step over" },
-      { "<F7>", dap.step_into, desc = "Debug step into" },
-      { "<F8>", dap.step_out, desc = "Debug step out" },
-      { "<F9>", dap.step_back, desc = "Debug step back" },
+      { "<F7>", dap.step_over, desc = "Debug step over" },
+      { "<F19>", dap.step_back, desc = "Debug step back (Shift+F7)" },
+      { "<F8>", dap.step_into, desc = "Debug step into" },
+      { "<F20>", dap.step_out, desc = "Debug step out (Shift+F8)" },
     })
 
     ---@diagnostic disable-next-line: missing-fields
@@ -84,19 +85,19 @@ return {
     vim.fn.sign_define("DapBreakpoint", {
       text = "󰄯",
       texthl = "DapBreakpoint",
-      linehl = "",
+      linehl = "DapBreakpointLine",
       numhl = "DapBreakpoint",
     })
     vim.fn.sign_define("DapBreakpointCondition", {
       text = "󰻃",
       texthl = "DapBreakpoint",
-      linehl = "",
+      linehl = "DapBreakpointLine",
       numhl = "DapBreakpoint",
     })
     vim.fn.sign_define("DapLogPoint", {
       text = "󰚕",
       texthl = "DapBreakpoint",
-      linehl = "",
+      linehl = "DapBreakpointLine",
       numhl = "DapBreakpoint",
     })
     vim.fn.sign_define("DapStopped", {
@@ -108,7 +109,7 @@ return {
     vim.fn.sign_define("DapBreakpointRejected", {
       text = "󱃓",
       texthl = "DapBreakpoint",
-      linehl = "",
+      linehl = "DapBreakpointLine",
       numhl = "DapBreakpoint",
     })
   end,

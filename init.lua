@@ -33,5 +33,6 @@ require("lazy").setup({
 require("custom.config.autocmds")
 require("custom.config.keymaps")
 
-vim.cmd.colorscheme("tokyonight")
+vim.o.termguicolors = true
+vim.cmd.colorscheme("catppuccin")
 vim.cmd.packadd("cfilter")

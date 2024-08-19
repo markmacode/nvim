@@ -2,6 +2,44 @@ return {
   -- The best color scheme I found so far for a good balance of contrast
   -- and use of colors. I dont like color schemes that use too much red on
   -- a dark background, it is possibly the worst sin of readabilty.
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   opts = function()
+  --     require("colorizer").setup()
+  --     require("custom.util").keys({
+  --       { "<leader>c", "<cmd>ColorizerToggle<cr>", desc = "Toggle colorizer" },
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   dir = "~/me/repos/allay.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = function()
+  --     require("custom.util").keys({
+  --       { "<leader>t", "<cmd>Inspect<cr>" },
+  --     })
+  --   end,
+  -- },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = function()
+      require("catppuccin").setup({
+        compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
+        custom_highlights = function(colors)
+          local util = require("catppuccin.utils.colors")
+          return {
+            Operator = { fg = colors.subtext1 },
+            ["@tag.delimiter"] = { fg = colors.subtext1 },
+
+            DapStoppedLine = { bg = util.darken(colors.red, 0.25) },
+          }
+        end,
+      })
+    end,
+  },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -18,9 +56,10 @@ return {
 
           -- dap
           hl.DapBreakpoint = { fg = c.red }
+          hl.DapBreakpointLine = { bg = "#4D2F3A" }
           hl.DapLogPoint = { fg = c.red }
           hl.DapStopped = { fg = c.fg }
-          hl.DapStoppedLine = { bg = c.bg_highlight }
+          hl.DapStoppedLine = { bg = "#3B405D" }
 
           -- dap-ui
           hl.DapUIScope = { fg = c.teal }
