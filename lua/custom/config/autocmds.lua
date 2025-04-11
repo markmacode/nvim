@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "json",
     "lua",
     "sh",
+    "svelte",
     "typescript",
     "typescriptreact",
     "xml",

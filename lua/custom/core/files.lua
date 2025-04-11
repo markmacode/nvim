@@ -19,8 +19,8 @@ return {
     local keymaps = {
       ["<leader>t?"] = { "actions.show_help", desc = "Help me" },
       ["<cr>"] = { "actions.select", desc = "Select dir/file" },
-      ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open in vertical split" },
-      ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in horizontal split" },
+      -- ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open in vertical split" },
+      -- ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open in horizontal split" },
       ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open in new tab" },
       ["<C-c>"] = { "actions.close", desc = "Close file tree" },
       ["<leader>tp"] = { "actions.preview", desc = "Open preview" },

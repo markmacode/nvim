@@ -17,22 +17,22 @@ return {
       { "<leader>sp", picker.builtin, desc = "Telescope pickers" },
       { "<leader>sr", picker.oldfiles, desc = "Recent files" },
       { "<leader>sb", picker.buffers, desc = "Buffers" },
-      { "<leader>sa", picker.find_files, desc = "CWD files (general)" },
+      { "<leader>sf", picker.find_files, desc = "CWD files (general)" },
       { "<leader>sh", picker.help_tags, desc = "Help" },
       { "<leader>sw", picker.grep_string, desc = "Word (grep)" },
       { "<leader>sc", picker.live_grep, desc = "Code (grep)" },
       { "<leader>/", picker.current_buffer_fuzzy_find, desc = "Current buffer search" },
       {
-        "<leader>sf",
+        "<leader>sg",
         function()
-          local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
-          if git.code ~= 0 then
-            picker.find_files()
-            return
-          end
+          -- local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
+          -- if git.code ~= 0 then
+          --   picker.find_files()
+          --   return
+          -- end
           -- If CWD is somewhere inside a git repo, then it will use
           -- the CWD instead of the git repo root dir.
-          picker.git_files({ use_git_root = false })
+          picker.git_files()
         end,
         desc = "CWD files (git/general)",
       },
@@ -56,7 +56,7 @@ return {
     telescope.setup({
       pickers = {
         git_files = {
-          show_untracked = true,
+          recurse_submodules = true,
         },
         -- Refer `~/.ignore` if there is a directory that still isn't showing
         -- up insdie "find_files" or "live_grep"

@@ -23,16 +23,18 @@ return {
     require("conform").setup({
       formatters_by_ft = {
         ["_"] = { "trim_whitespace" },
-        css = { "prettier" },
-        html = { "prettier" },
-        javascript = { "prettier" },
-        javascriptreact = { "prettier" },
+        css = { "biome-check" },
+        html = { "biome-check" },
+        javascript = { "biome-check" },
+        javascriptreact = { "biome-check" },
+        json = { "biome-check" },
+        jsonc = { "biome-check" },
         lua = { "stylua" },
         markdown = { "mdformat" },
         python = { "ruff_organize_imports", "ruff_format" },
         sh = { "shfmt" },
-        typescript = { "prettier" },
-        typescriptreact = { "prettier" },
+        typescript = { "biome-check" },
+        typescriptreact = { "biome-check" },
       },
       formatters = {
         mdformat = {

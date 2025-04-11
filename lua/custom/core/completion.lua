@@ -40,6 +40,11 @@ return {
       },
     })
 
+    -- Disabling for specific file types
+    cmp.setup.filetype({ "go" }, {
+      sources = {},
+    })
+
     -- I have to call this here and in snippetins.lua
     -- For some reason this stops html duplication inside
     -- jsx and tsx files.
