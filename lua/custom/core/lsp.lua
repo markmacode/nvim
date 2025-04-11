@@ -18,7 +18,7 @@ return {
     local keys = {
       { "gd", telescope.lsp_definitions, desc = "Goto definitions" },
       { "gr", telescope.lsp_references, desc = "Goto references" },
-      { "ga", telescope.lsp_implementations, desc = "Goto assignments" },
+      { "gi", telescope.lsp_implementations, desc = "Goto assignments" },
       { "gt", telescope.lsp_type_definitions, desc = "Goto type definition" },
       { "gD", vim.lsp.buf.declaration, desc = "Goto declaration" },
       { "<C-s>", vim.lsp.buf.signature_help, mode = { "n", "i" }, desc = "Signature help" },
