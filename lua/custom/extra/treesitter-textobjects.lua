@@ -25,27 +25,26 @@ return {
 
     require("nvim-treesitter-textobjects").setup({
       select = {
+        enable = true,
         lookahead = true,
+        keymaps = {
+          ["ic"] = { query = "@call.inner", desc = "Select operation call parameters" },
+          ["ac"] = { query = "@call.outer", desc = "Select operation call" },
+        },
       },
-    })
-
-    -- Altering code
-    -- I prefer to use mini.ai to set these up, but for some reason it
-    -- does not want to work for the @call object, which I use a lot.
-    local select = require("nvim-treesitter-textobjects.select").select_textobject
-    -- stylua: ignore
-    require("custom.util").keys({
-      { "ac", function() select("@call.outer") end, desc = "Select call" },
-      { "ic", function() select("@call.inner") end, desc = "Select call args" },
-    }, { mode = { "x", "o" } })
-
-    -- Swapping stuff
-    local swap = require("nvim-treesitter-textobjects.swap")
-    require("custom.util").keys({
-      { "<leader>rl", swap.swap_next("@parameter.inner"), desc = "Swap parameter right" },
-      { "<leader>rh", swap.swap_previous("@parameter.inner"), desc = "Swap parameter left" },
-      { "<leader>rL", swap.swap_next("@function.outer"), desc = "Swap function right" },
-      { "<leader>rH", swap.swap_previous("@function.outer"), desc = "Swap function left" },
+      textobjects = {
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>rl"] = { query = "@parameter.inner", desc = "Swap with next parameter" },
+            ["<leader>rL"] = { query = "@function.outer", desc = "Swap with next function" },
+          },
+          swap_previous = {
+            ["<leader>rh"] = { query = "@parameter.inner", desc = "Swap with previous parameter" },
+            ["<leader>rH"] = { query = "@function.outer", desc = "Swap with previous function" },
+          },
+        },
+      },
     })
   end,
 }

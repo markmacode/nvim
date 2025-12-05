@@ -1,6 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
-  version = "*",
+  version = "v2.*",
   build = "make install_jsregexp",
   event = "VeryLazy",
   dependencies = {
@@ -12,30 +12,17 @@ return {
   opts = function()
     local luasnip = require("luasnip")
 
-    require("custom.util").keys({
-      {
-        "<C-l>",
-        function()
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          end
-        end,
-        desc = "Snippet cursor next",
-        mode = { "i", "s" },
-        silent = true,
-      },
-      {
-        "<C-h>",
-        function()
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          end
-        end,
-        desc = "Snippet cursor jump prev",
-        mode = { "i", "s" },
-        silent = true,
-      },
-    })
+    vim.keymap.set({ "i", "s" }, "<C-l>", function()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      end
+    end, { desc = "Snippet cursor next", silent = true })
+
+    vim.keymap.set({ "i", "s" }, "<C-h>", function()
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      end
+    end, { desc = "Snippet cursor jump prev", silent = true })
 
     luasnip.filetype_extend("javascriptreact", { "html" })
     luasnip.filetype_extend("typescriptreact", { "html" })

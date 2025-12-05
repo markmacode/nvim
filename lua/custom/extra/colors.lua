@@ -33,7 +33,6 @@ return {
           return {
             Operator = { fg = colors.subtext1 },
             ["@tag.delimiter"] = { fg = colors.subtext1 },
-
             DapStoppedLine = { bg = util.darken(colors.red, 0.25) },
           }
         end,

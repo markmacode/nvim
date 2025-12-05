@@ -5,9 +5,7 @@ return {
   config = function()
     local lint = require("lint")
 
-    require("custom.util").keys({
-      { "gl", lint.try_lint, desc = "Lint file" },
-    })
+    vim.keymap.set("n", "gl", lint.try_lint, { desc = "Lint file" })
 
     lint.linters_by_ft = {
       python = { "ruff" },

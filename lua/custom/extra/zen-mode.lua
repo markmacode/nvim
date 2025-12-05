@@ -11,8 +11,6 @@ return {
   },
   config = function()
     local zen = require("zen-mode")
-    require("custom.util").keys({
-      { "<leader>z", zen.toggle, desc = "Zen mode" },
-    })
+    vim.keymap.set("n", "<leader>z", zen.toggle, { desc = "Zen mode" })
   end,
 }

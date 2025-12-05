@@ -13,44 +13,33 @@ return {
 
     -- The ~/.ignore file will affect results of various file finders,
     -- so take that into consideration if results are not as expected.
-    require("custom.util").keys({
-      { "<leader>sp", picker.builtin, desc = "Telescope pickers" },
-      { "<leader>sr", picker.oldfiles, desc = "Recent files" },
-      { "<leader>sb", picker.buffers, desc = "Buffers" },
-      { "<leader>sf", picker.find_files, desc = "CWD files (general)" },
-      { "<leader>sh", picker.help_tags, desc = "Help" },
-      { "<leader>sw", picker.grep_string, desc = "Word (grep)" },
-      { "<leader>sc", picker.live_grep, desc = "Code (grep)" },
-      { "<leader>/", picker.current_buffer_fuzzy_find, desc = "Current buffer search" },
-      {
-        "<leader>sg",
-        function()
-          -- local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
-          -- if git.code ~= 0 then
-          --   picker.find_files()
-          --   return
-          -- end
-          -- If CWD is somewhere inside a git repo, then it will use
-          -- the CWD instead of the git repo root dir.
-          picker.git_files()
-        end,
-        desc = "CWD files (git/general)",
-      },
-      {
-        "<leader>sn",
-        function()
-          picker.find_files({ cwd = vim.fn.stdpath("config") })
-        end,
-        desc = "Neovim config",
-      },
-      {
-        "<leader>sl",
-        function()
-          picker.find_files({ cwd = vim.fn.stdpath("data") })
-        end,
-        desc = "Neovim XDG data",
-      },
-    })
+    vim.keymap.set("n", "<leader>sp", picker.builtin, { desc = "Telescope pickers" })
+    vim.keymap.set("n", "<leader>sr", picker.oldfiles, { desc = "Recent files" })
+    vim.keymap.set("n", "<leader>sb", picker.buffers, { desc = "Buffers" })
+    vim.keymap.set("n", "<leader>sf", picker.find_files, { desc = "CWD files (general)" })
+    vim.keymap.set("n", "<leader>sh", picker.help_tags, { desc = "Help" })
+    vim.keymap.set("n", "<leader>sw", picker.grep_string, { desc = "Word (grep)" })
+    vim.keymap.set("n", "<leader>sc", picker.live_grep, { desc = "Code (grep)" })
+    vim.keymap.set("n", "<leader>/", picker.current_buffer_fuzzy_find, { desc = "Current buffer search" })
+
+    vim.keymap.set("n", "<leader>sg", function()
+      -- local git = vim.system({ "git", "rev-parse", "--is-inside-work-tree" }):wait()
+      -- if git.code ~= 0 then
+      --   picker.find_files()
+      --   return
+      -- end
+      -- If CWD is somewhere inside a git repo, then it will use
+      -- the CWD instead of the git repo root dir.
+      picker.git_files()
+    end, { desc = "CWD files (git/general)" })
+
+    vim.keymap.set("n", "<leader>sn", function()
+      picker.find_files({ cwd = vim.fn.stdpath("config") })
+    end, { desc = "Neovim config" })
+
+    vim.keymap.set("n", "<leader>sl", function()
+      picker.find_files({ cwd = vim.fn.stdpath("data") })
+    end, { desc = "Neovim XDG data" })
 
     telescope.load_extension("fzf")
     telescope.setup({

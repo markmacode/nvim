@@ -2,25 +2,18 @@ return {
   "stevearc/conform.nvim",
   event = "VeryLazy",
   opts = function()
-    require("custom.util").keys({
-      {
-        "<leader>rf",
-        function()
-          require("conform").format({ lsp_format = "fallback" })
-        end,
-        desc = "Format file",
-      },
-      {
-        "<leader><space>",
-        function()
-          require("conform").format({ lsp_format = "fallback" })
-          vim.cmd("write")
-        end,
-        desc = "Format and save",
-      },
-    })
+    local conform = require("conform")
 
-    require("conform").setup({
+    vim.keymap.set("n", "<leader>rf", function()
+      conform.format({ lsp_format = "fallback" })
+    end, { desc = "Format file" })
+
+    vim.keymap.set("n", "<leader><space>", function()
+      conform.format({ lsp_format = "fallback" })
+      vim.cmd("write")
+    end, { desc = "Format and save" })
+
+    conform.setup({
       formatters_by_ft = {
         ["_"] = { "trim_whitespace" },
         css = { "biome-check" },

@@ -4,32 +4,19 @@ return {
   branch = "main",
   build = ":TSUpdate",
   opts = function()
-    require("nvim-treesitter").setup({
-      ensure_install = {
-        "core",
-        "stable",
-        "dockerfile",
-        "gomod",
-        "gdscript",
-        "godot_resource",
-        "graphql",
-      },
+    require("nvim-treesitter").install({
+      "stable",
+      "unstable",
     })
 
     -- I want to know if treesitter is enabled or not
-    require("custom.util").keys({
-      {
-        "\\t",
-        function()
-          if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
-            vim.treesitter.stop()
-          else
-            vim.treesitter.start()
-          end
-        end,
-        desc = "Toggle treesitter",
-      },
-    })
+    vim.keymap.set("n", "\\t", function()
+      if vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil then
+        vim.treesitter.stop()
+      else
+        vim.treesitter.start()
+      end
+    end, { desc = "Toggle treesitter" })
 
     -- Enable highlighting
     vim.api.nvim_create_autocmd("FileType", {

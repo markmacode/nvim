@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Indent 4 spaces for these files
+-- Indent 2 spaces for these files
 vim.api.nvim_create_autocmd("FileType", {
   group = require("custom.util").group,
   pattern = {

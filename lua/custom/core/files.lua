@@ -10,11 +10,9 @@ return {
       ".DS_Store",
     }
     local hide_pattern = {}
-
     local oil = require("oil")
-    require("custom.util").keys({
-      { "<leader>o", oil.open, desc = "Oil file manager" },
-    })
+
+    vim.keymap.set("n", "<leader>o", oil.open, { desc = "Oil file manager" })
 
     local keymaps = {
       ["<leader>t?"] = { "actions.show_help", desc = "Help me" },
