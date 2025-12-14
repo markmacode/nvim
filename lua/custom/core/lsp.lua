@@ -39,7 +39,6 @@ return {
       lua_ls = true,
       marksman = true,
       pyright = true,
-      svelte = true,
       yamlls = {
         settings = {
           yaml = {
@@ -65,7 +64,6 @@ return {
       "shellcheck",
       "yamllint",
       -- Formatters
-      "biome",
       "gofumpt",
       "mdformat",
       "ruff",

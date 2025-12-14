@@ -5,8 +5,33 @@ return {
   build = ":TSUpdate",
   opts = function()
     require("nvim-treesitter").install({
-      "stable",
-      "unstable",
+      "bash",
+      "c",
+      "cpp",
+      "csharp",
+      "css",
+      "go",
+      "gomod",
+      "gosum",
+      "java",
+      "javascript",
+      "jsx",
+      "jinja",
+      "json",
+      "html",
+      "lua",
+      "markdown",
+      "python",
+      "scss",
+      "sql",
+      "terraform",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "xml",
+      "yaml",
+      "zsh",
     })
 
     -- I want to know if treesitter is enabled or not
@@ -22,15 +47,9 @@ return {
     vim.api.nvim_create_autocmd("FileType", {
       group = require("custom.util").group,
       pattern = {
-        "c",
-        "cpp",
-        "css",
-        "csv",
-        "gdscript",
         "go",
         "gomod",
         "gosum",
-        "graphql",
         "html",
         "javascript",
         "javascriptreact",
@@ -39,7 +58,7 @@ return {
         "markdown",
         "python",
         "sh",
-        "svelte",
+        "terraform",
         "toml",
         "typescript",
         "typescriptreact",
@@ -57,7 +76,6 @@ return {
       group = require("custom.util").group,
       pattern = {
         "javascriptreact",
-        "svelte",
         "typescriptreact",
       },
       callback = function()
